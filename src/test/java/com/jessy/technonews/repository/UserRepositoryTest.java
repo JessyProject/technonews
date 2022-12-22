@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 class UserRepositoryTest {
@@ -50,12 +49,5 @@ class UserRepositoryTest {
         // then
         assertThat(disabledUsers).hasSize(0);
     }
-
-    @Test
-    void testALaCon() {
-        System.out.println(3 * .4);
-        assertTrue(3 * .4 == 1.2);
-    }
-
 
 }

@@ -21,7 +21,17 @@ import java.io.IOException;
 public class CustomAuthorizationFilter extends OncePerRequestFilter {
     private final CustomProvider customProvider;
     private final UserDetailsService userDetailsService;
-    // Determine if the user has access to the application or not
+
+    /**
+     * Filtre les requêtes HTTP pour déterminer si l'utilisateur a accès à l'application ou non.
+     * Si un token JWT est présent dans la requête et que ce token est valide, crée un objet d'authentification pour l'utilisateur
+     * associé au token et place cet objet dans le contexte de sécurité.
+     * @param request la requête HTTP en cours
+     * @param response la réponse HTTP en cours
+     * @param filterChain la chaîne de filtres en cours
+     * @throws ServletException si un problème survient lors du filtrage de la requête
+     * @throws IOException si un problème survient lors de la lecture ou de l'écriture de la réponse
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
             String token = customProvider.getTokenFromRequest(request);

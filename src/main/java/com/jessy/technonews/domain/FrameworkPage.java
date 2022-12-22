@@ -20,6 +20,9 @@ public class FrameworkPage {
     @JsonManagedReference(value = "frameworkPages")
     @ManyToOne
     private Framework framework;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User creator;
     private String content;
     private Date date_creation;
 }

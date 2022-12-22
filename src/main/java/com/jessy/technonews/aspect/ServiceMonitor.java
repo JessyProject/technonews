@@ -17,12 +17,12 @@ public class ServiceMonitor {
 
     @AfterReturning("methodCall()")
     public void log(JoinPoint joinPoint) {
-        log.info(joinPoint.getSignature().getName() + " called...");
+        log.info("[SERVICE][" + joinPoint.getTarget().getClass().getSimpleName() + "][" + joinPoint.getSignature().getName() + "] CALLED...");
     }
 
     @AfterThrowing(pointcut = "methodCall()", throwing = "e")
     public void log(JoinPoint joinPoint, Throwable e) {
-       log.info("Return of {} with an exception {}",
+        log.info("Return of {} with an exception {}",
                 joinPoint.toShortString(),
                 e.getClass().getSimpleName());
     }
